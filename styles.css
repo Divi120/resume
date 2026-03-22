@@ -1,0 +1,422 @@
+/* ── Reset & Variables ── */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --blush:       #F9DFDF;
+    --blush-light: #FDF0F0;
+    --blush-deep:  #F0C8C8;
+    --rose:        #C4737A;
+    --rose-dark:   #9E4F55;
+    --ink:         #2C1F20;
+    --ink-soft:    #5A4548;
+    --white:       #FFFAFA;
+    --card-shadow: 0 4px 24px rgba(196, 115, 122, 0.12);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--blush-light);
+    color: var(--ink);
+    overflow-x: hidden;
+}
+
+/* ── Sticky Nav ── */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(249, 223, 223, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--blush-deep);
+    padding: 14px 40px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rose-dark);
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+}
+
+nav a:hover {
+    background: var(--rose);
+    color: var(--white);
+    border-color: var(--rose);
+}
+
+/* ── Hero ── */
+.hero {
+    text-align: center;
+    padding: 80px 24px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, var(--blush-deep) 0%, transparent 70%);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* ── Hero Photo ── */
+.hero-image-wrap {
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+}
+
+.hero-photo {
+    width: 220px;
+    height: 280px;
+    object-fit: cover;
+    object-position: center 15%;
+    border-radius: 20px;
+    border: 4px solid var(--white);
+    box-shadow: 0 8px 32px rgba(196, 115, 122, 0.3);
+    outline: 3px solid var(--blush-deep);
+}
+
+.hero-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 16px;
+    animation: fadeUp 0.8s ease both;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.1;
+    animation: fadeUp 0.8s 0.15s ease both;
+}
+
+.hero h1 em {
+    font-style: italic;
+    color: var(--rose);
+}
+
+.hero-sub {
+    margin-top: 20px;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    font-weight: 300;
+    max-width: 480px;
+    margin-inline: auto;
+    line-height: 1.7;
+    animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.hero-divider {
+    margin: 48px auto 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--rose), transparent);
+    animation: fadeUp 0.8s 0.6s ease both;
+}
+
+/* ── Contact Bar ── */
+.contact-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+    animation: fadeUp 0.8s 0.45s ease both;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--rose-dark);
+    text-decoration: none;
+    background: var(--white);
+    border: 1.5px solid var(--blush-deep);
+    padding: 8px 18px;
+    border-radius: 30px;
+    transition: all 0.25s ease;
+}
+
+.contact-item:hover {
+    background: var(--rose);
+    color: var(--white);
+    border-color: var(--rose);
+    transform: translateY(-2px);
+}
+
+.contact-icon { font-size: 1rem; }
+
+/* ── Sections ── */
+.section-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+}
+
+.section-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 48px 52px;
+    margin-bottom: 40px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--blush-deep);
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+}
+
+.section-card:hover {
+    box-shadow: 0 8px 40px rgba(196, 115, 122, 0.2);
+}
+
+.section-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.section-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 24px;
+    line-height: 1.2;
+}
+
+.section-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--rose-dark);
+    margin: 28px 0 10px;
+}
+
+.section-card p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--ink-soft);
+    font-weight: 300;
+}
+
+/* ── Section Images ── */
+.section-img {
+    width: 100%;
+    max-height: 340px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 14px;
+    margin-top: 24px;
+    border: 1px solid var(--blush-deep);
+    box-shadow: var(--card-shadow);
+}
+
+.section-img.square {
+    width: 100%;
+    max-width: 340px;
+    height: 340px;
+    object-fit: cover;
+    object-position: left 20%;
+    display: block;
+    margin: 24px auto 0;
+    border-radius: 14px;
+    border: 1px solid var(--blush-deep);
+    box-shadow: var(--card-shadow);
+}
+
+.img-caption {
+    font-size: 0.82rem;
+    color: var(--rose);
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+    letter-spacing: 0.03em;
+}
+
+/* ── Timeline ── */
+.timeline {
+    list-style: none;
+    position: relative;
+    padding-left: 28px;
+    margin-top: 8px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--rose), var(--blush-deep));
+    border-radius: 2px;
+}
+
+.timeline li {
+    position: relative;
+    padding: 0 0 32px 20px;
+}
+
+.timeline li::before {
+    content: '';
+    position: absolute;
+    left: -28px; top: 6px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 3px solid var(--rose);
+    box-shadow: 0 0 0 3px var(--blush-deep);
+}
+
+.timeline .school-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.timeline .school-meta {
+    font-size: 0.85rem;
+    color: var(--rose);
+    margin: 4px 0 8px;
+    font-weight: 500;
+}
+
+.timeline .school-details {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+/* ── Interests Grid ── */
+.interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.interest-item {
+    background: var(--blush-light);
+    border: 1px solid var(--blush-deep);
+    border-radius: 14px;
+    padding: 16px 18px;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s ease, transform 0.2s ease;
+    font-weight: 400;
+}
+
+.interest-item:hover {
+    background: var(--blush-deep);
+    transform: translateY(-3px);
+}
+
+.interest-icon { font-size: 1.2rem; }
+
+/* ── Puzzle Quote ── */
+.puzzle-quote {
+    margin-top: 24px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--rose-dark);
+    line-height: 1.7;
+    border-top: 1px solid var(--blush-deep);
+    padding-top: 24px;
+}
+
+/* ── Skills Pills ── */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.skill-pill {
+    background: var(--blush);
+    border: 1.5px solid var(--blush-deep);
+    color: var(--rose-dark);
+    padding: 10px 22px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.25s ease;
+    cursor: default;
+}
+
+.skill-pill:hover {
+    background: var(--rose);
+    color: var(--white);
+    border-color: var(--rose);
+    transform: translateY(-2px);
+}
+
+/* ── Footer ── */
+footer {
+    text-align: center;
+    padding: 48px 24px;
+    font-size: 0.85rem;
+    color: var(--rose);
+    letter-spacing: 0.08em;
+    border-top: 1px solid var(--blush-deep);
+}
+
+footer span {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--rose-dark);
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .section-card { padding: 32px 24px; }
+    nav { padding: 12px 16px; gap: 6px; }
+    .hero-photo { width: 180px; height: 230px; }
+}
